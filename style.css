@@ -1,14 +1,17 @@
-body {
-    background-color: #EEF2FF;
-    font-family: Arial,sans-serif;
-    text-align: center;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+/* General Styles */
+* {
+    box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+    background-color: #F8FAFC;
+    font-family: Arial, sans-serif;
+    color: #1E293B;
+}
+
+/* Headings */
 h1 {
     color: #3730A3;
 }
@@ -21,24 +24,31 @@ p {
     color: #64748B;
 }
 
-input {
+/* Inputs */
+input,
+select,
+textarea {
+    width: 100%;
     padding: 10px;
     border: 1px solid #CBD5E1;
-    border-radius: 5px;
+    border-radius: 6px;
+    font-family: Arial, sans-serif;
 }
 
-input:focus {
+input:focus,
+select:focus,
+textarea:focus {
     outline: none;
     border-color: #4F46E5;
 }
 
-
+/* Buttons */
 button {
     background-color: #4F46E5;
     color: white;
-    padding: 10px 25px;
+    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -47,10 +57,86 @@ button:hover {
     background-color: #3730A3;
 }
 
-.login {
+button:disabled {
+    background-color: #94A3B8;
+    cursor: not-allowed;
+}
+
+/* Login and Register */
+.login,
+.register {
     background-color: white;
-    width: 300px;
+    width: 350px;
+    max-width: 90%;
     padding: 30px;
     border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    margin: auto;
 }
+
+/* Center Login and Register Pages */
+body:has(.login),
+body:has(.register) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Dashboard Layout */
+.dashboard {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    text-align: left;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 12px;
+    border-bottom: 1px solid #E2E8F0;
+    text-align: left;
+}
+
+th {
+    background-color: #EEF2FF;
+    color: #3730A3;
+}
+
+/* Links */
+a {
+    color: #4F46E5;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .dashboard {
+        padding: 15px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+    th,
+    td {
+        padding: 8px;
+    }
+}
+
 

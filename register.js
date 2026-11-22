@@ -25,6 +25,7 @@ registerForm.addEventListener("submit",async function(event) {
                 data: {
                     full_name: fullName
                 }
+                emailRedirectTo: "http://127.0.0.1:5500/index.html"
             }
         });
 
