@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - ClubFund</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js" defer></script>
+    <script src="register.js" defer></script>
+</head>
+<body>
+
+    <div class="login">
+        <h1>ClubFund</h1>
+
+        <h2>Create an Account</h2>
+
+        <p>Please register your account.</p>
+
+        <form id="registerForm">
+
+            <label>Full Name:</label>
+            <input id="fullName" type="text" placeholder="Enter your full name">
+
+            <br><br>
+
+            <label>Email:</label>
+            <input id="registerEmail" type="email" placeholder="Enter your email">
+
+            <br><br>
+
+            <label>Password:</label>
+            <input id="registerPassword" type="password" placeholder="Create a password">
+
+            <br><br>
+
+            <button type="submit">Register</button>
+
+        </form>
+
+        <p id="registerMessage"></p>
+
+        <p>Already have an account? <a href="index.html">Login here</a></p>
+
+    </div>
+</body>
+</html>

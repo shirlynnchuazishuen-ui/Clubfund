@@ -1,0 +1,37 @@
+// Register page
+const fullNameInput = document.getElementById("fullName");
+const registerEmailInput = document.getElementById("registerEmail");
+const registerPasswordInput = document.getElementById("registerPassword");
+
+const registerForm = document.getElementById("registerForm");
+const registerMessage = document.getElementById("registerMessage");
+
+//Handle registration
+registerForm.addEventListener("submit",async function(event) {
+    event.preventDefault();
+
+    const fullName = fullNameInput.value;
+    const email = registerEmailInput.value;
+    const password = registerPasswordInput.value;
+
+    if (fullName ==="" || email === "" || password === "") {
+        registerMessage.textContent = "Please fill in all fields.";
+    } else {
+        //Register with Supabase
+        const { data, error } = await supabaseClient.auth.signUp({
+            email: email,
+            password: password,
+            options: {
+                data: {
+                    full_name: fullName
+                }
+            }
+        });
+
+        if (error) {
+            registerMessage.textContent = error.message;
+        } else{
+        registerMessage.textContent = "Registration successful! Please check your email if confirmation is required.";
+        }
+    }
+});

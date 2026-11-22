@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="login">
@@ -15,23 +17,25 @@
 
     <p>Please login to your account.</p>
 
-    <form>
+    <form id="loginForm">
 
         <label>Email:</label>
-        <input type="email" placeholder="Enter your email">
+        <input id="email" type="email" placeholder="Enter your email">
 
         <br><br>
 
         <label>Password:</label>
-        <input type="password" placeholder="Enter your password">
+        <input id="password" type="password" placeholder="Enter your password">
 
         <br><br>
 
-        <button type="submit">Login</button>
-
+        <button id="loginButton" type="submit">Login</button>
+       
     </form>
 
-    <p>Don't have an account? Register here.</p>
+    <p id="loginMessage"></p>
+
+    <p>Don't have an account? <a href="register.html">Register here.</a></p>
     </div>
 </body>
 </html>
