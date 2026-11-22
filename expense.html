@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Expense - ClubFund</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js" defer></script>
+    <script src="expense.js" defer></script>
+</head>
+<body>
+
+    <div class="expense">
+        <h1>ClubFund</h1>
+        <h2>Submit Expense</h2>
+
+        <form id="expenseForm">
+
+            <label>Expense Amount (RM):</label>
+            <input type="number" id="expenseAmount" placeholder="Enter amount">
+
+            <br><br>
+
+            <label>Description:</label>
+            <input type="text" id="expenseDescription" placeholder="Enter expense description">
+
+            <br><br>
+
+            <label>Category:</label>
+            <select id="expenseCategory">
+                <option value="">Select category</option>
+                <option value="Food">Food</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Equipment">Equipment</option>
+                <option value="Others">Others</option>
+            </select>
+
+            <br><br>
+
+            <label>Expense Date:</label>
+            <input type="date" id="expenseDate">
+
+            <br><br>
+
+            <label>Receipt:</label>
+            <input type="file" id="receipt">
+
+            <br><br>
+
+            <button type="submit">Submit Expense</button>
+
+            <p id="expenseMessage"></p>
+
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Dashboard - ClubFund</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js" defer></script>
+    <script src="dashboard.js" defer></script>
+</head>
+<body>
+
+    <div class="dashboard">
+        <h1>ClubFund</h1>
+        <h2>Dashboard</h2>
+        <p>Welcome to ClubFund!</p>
+
+        <button id="logoutButton">Logout</button>
+        <p id="logoutMessage"></p>
+
+        <hr>
+
+        <h2>Expense Records</h2>
+
+        <a href="expense.html">Submit New Expense</a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Amount (RM)</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody id="expenseRecords">
+                <tr>
+                    <td colspan="5">Loading expenses...</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p id="expenseRecordsMessage"></p>
+
+    </div>
+
+</body>
+</html>

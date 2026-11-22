@@ -29,7 +29,7 @@ loginForm.addEventListener("submit", async function(event) {
     if (error){
         loginMessage.textContent = error.message;
     }else{
-        loginMessage.textContent="Login successful!"
+        window.location.href ="dashboard.html"
     }
     }
 });
