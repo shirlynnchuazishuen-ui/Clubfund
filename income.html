@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Management - ClubFund</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabaseClient.js" defer></script>
+    <script src="income.js" defer></script>
+</head>
+
+<body>
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h1 class="sidebar-logo">ClubFund</h1>
+
+            <nav class="sidebar-nav">
+                <a href="treasurer.html">Dashboard</a>
+                <a href="income.html" class="active">Income</a>
+                <a href="expense.html">Submit New Expense</a>
+                <a href="budget.html">Budgets</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <button id="logoutButton">Logout</button>
+                <p id="logoutMessage"></p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="page-header">
+                <h2>Income Management</h2>
+                <p>Record and monitor club income.</p>
+            </header>
+
+            <!-- Add Income -->
+            <section class="content-section">
+                <h2>Record New Income</h2>
+
+                <form id="incomeForm">
+
+                    <div class="form-group">
+                        <label for="incomeSource">Income Source</label>
+                        <select id="incomeSource" required>
+                            <option value="">Select income source</option>
+                            <option value="University Allocation">University Allocation</option>
+                            <option value="Sponsorship">Sponsorship</option>
+                            <option value="Membership Fees">Membership Fees</option>
+                            <option value="Event Income">Event Income</option>
+                            <option value="Donation">Donation</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="incomeDescription">Description</label>
+                        <input
+                            type="text"
+                            id="incomeDescription"
+                            placeholder="Enter income details"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="incomeAmount">Amount (RM)</label>
+                        <input
+                            type="number"
+                            id="incomeAmount"
+                            min="0.01"
+                            step="0.01"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="incomeDate">Income Date</label>
+                        <input type="date" id="incomeDate" required>
+                    </div>
+
+                    <button type="submit">Record Income</button>
+
+                </form>
+
+                <p id="incomeMessage"></p>
+            </section>
+
+            <!-- Income Records -->
+            <section class="content-section">
+                <h2>Income Records</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Source</th>
+                            <th>Description</th>
+                            <th>Amount (RM)</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="incomeRecords">
+                        <tr>
+                            <td colspan="4">Loading income records...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+        </main>
+    </div>
+</body>
+</html>

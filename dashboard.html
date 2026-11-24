@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - ClubFund</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -11,39 +12,71 @@
 </head>
 <body>
 
-    <div class="dashboard">
-        <h1>ClubFund</h1>
-        <h2>Dashboard</h2>
-        <p>Welcome to ClubFund!</p>
+    <div class="app-layout">
 
-        <button id="logoutButton">Logout</button>
-        <p id="logoutMessage"></p>
+        <!-- Sidebar -->
+        <aside class="sidebar">
 
-        <hr>
+            <h1 class="sidebar-logo">ClubFund</h1>
 
-        <h2>Expense Records</h2>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="active">
+                    Dashboard
+                </a>
 
-        <a href="expense.html">Submit New Expense</a>
+                <a href="expense.html">
+                    Submit New Expense
+                </a>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Description</th>
-                    <th>Amount (RM)</th>
-                    <th>Category</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
+                <a href="budget.html">
+                    Budgets
+                </a>
+            </nav>
 
-            <tbody id="expenseRecords">
-                <tr>
-                    <td colspan="5">Loading expenses...</td>
-                </tr>
-            </tbody>
-        </table>
+            <div class="sidebar-bottom">
+                <button id="logoutButton">Logout</button>
+                <p id="logoutMessage"></p>
+            </div>
 
-        <p id="expenseRecordsMessage"></p>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="page-header">
+                <div>
+                    <h2>Dashboard</h2>
+                    <p>Welcome to ClubFund!</p>
+                </div>
+            </header>
+
+            <section class="content-section">
+
+                <h2>Expense Records</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Amount (RM)</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="expenseRecords">
+                        <tr>
+                            <td colspan="5">Loading expenses...</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p id="expenseRecordsMessage"></p>
+
+            </section>
+
+        </main>
 
     </div>
 

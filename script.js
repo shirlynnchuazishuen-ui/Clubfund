@@ -29,8 +29,22 @@ loginForm.addEventListener("submit", async function(event) {
     if (error){
         loginMessage.textContent = error.message;
     }else{
-        window.location.href ="dashboard.html"
+        const { data: profile, error: profileError } =
+        await supabaseClient
+            .from("profiles")
+            .select("role")
+            .eq("user_id", data.user.id)
+            .single();
+
+    if (profileError || !profile) {
+        loginMessage.textContent =
+            "Unable to load user role.";
+    } else if (profile.role === "treasurer") {
+        window.location.href = "treasurer.html";
+    } else {
+        window.location.href = "dashboard.html";
     }
+        }
     }
 });
 

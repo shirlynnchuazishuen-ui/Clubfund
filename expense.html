@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,49 +13,102 @@
 </head>
 <body>
 
-    <div class="expense">
-        <h1>ClubFund</h1>
-        <h2>Submit Expense</h2>
+    <div class="app-layout">
 
-        <form id="expenseForm">
+        <!-- Sidebar -->
+        <aside class="sidebar">
 
-            <label>Expense Amount (RM):</label>
-            <input type="number" id="expenseAmount" placeholder="Enter amount">
+            <h1 class="sidebar-logo">ClubFund</h1>
 
-            <br><br>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" id="dashboardNavLink">
+                    Dashboard
+                </a>
 
-            <label>Description:</label>
-            <input type="text" id="expenseDescription" placeholder="Enter expense description">
+                <a href="income.html" id="incomeNavLink" style="display: none;">
+                    Income
+                </a>
 
-            <br><br>
+                <a href="expense.html" class="active">
+                    Submit New Expense
+                </a>
 
-            <label>Category:</label>
-            <select id="expenseCategory">
-                <option value="">Select category</option>
-                <option value="Food">Food</option>
-                <option value="Transportation">Transportation</option>
-                <option value="Equipment">Equipment</option>
-                <option value="Others">Others</option>
-            </select>
+                <a href="budget.html">
+                    Budgets
+                </a>
+            </nav>
 
-            <br><br>
+            <div class="sidebar-bottom">
+                <button id="logoutButton">Logout</button>
+                <p id="logoutMessage"></p>
+            </div>
 
-            <label>Expense Date:</label>
-            <input type="date" id="expenseDate">
+        </aside>
 
-            <br><br>
+        <!-- Main Content -->
+        <main class="main-content">
 
-            <label>Receipt:</label>
-            <input type="file" id="receipt">
+            <header class="page-header">
+                <h2>Submit Expense</h2>
+                <p>Submit your expense claim and upload the receipt.</p>
+            </header>
 
-            <br><br>
+            <section class="content-section">
 
-            <button type="submit">Submit Expense</button>
+                <form id="expenseForm">
 
-            <p id="expenseMessage"></p>
+                    <div class="form-group">
+                        <label for="expenseAmount">Expense Amount (RM)</label>
+                        <input type="number" id="expenseAmount"
+                            placeholder="Enter amount">
+                    </div>
 
-        </form>
+                    <div class="form-group">
+                        <label for="expenseDescription">Description</label>
+                        <input type="text" id="expenseDescription"
+                            placeholder="Enter expense description">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expenseCategory">Category</label>
+                        <select id="expenseCategory">
+                            <option value="">Select category</option>
+                            <option value="Food">Food</option>
+                            <option value="Transportation">Transportation</option>
+                            <option value="Equipment">Equipment</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expenseBudget">Budget</label>
+                        <select id="expenseBudget" required>
+                            <option value="">Select budget</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expenseDate">Expense Date</label>
+                        <input type="date" id="expenseDate">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="receipt">Receipt</label>
+                        <input type="file" id="receipt">
+                    </div>
+
+                    <button type="submit">Submit Expense</button>
+
+                    <p id="expenseMessage"></p>
+
+                </form>
+
+            </section>
+
+        </main>
+
     </div>
 
 </body>
 </html>
+console.log("NEW EXPENSE.JS LOADED");

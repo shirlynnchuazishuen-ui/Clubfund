@@ -3,9 +3,13 @@ const budgetForm = document.getElementById("budgetForm");
 const budgetMessage = document.getElementById("budgetMessage");
 const budgetRecords = document.getElementById("budgetRecords");
 
+const createBudgetSection = document.getElementById("createBudgetSection");
+
+const pageTitle = document.getElementById("pageTitle");
+const pageDescription =document.getElementById("pageDescription");
+
 // Check current user and role
 async function checkUserRole() {
-
     const { data: userData, error: userError } =
         await supabaseClient.auth.getUser();
 
@@ -24,12 +28,20 @@ async function checkUserRole() {
         budgetMessage.textContent = "Unable to load user profile.";
         return null;
     }
+    const incomeNavLink = document.getElementById("incomeNavLink");
+    const dashboardNavLink = document.getElementById("dashboardNavLink");
 
+    if (profile.role === "treasurer") {
+        incomeNavLink.style.display = "";
+        dashboardNavLink.href = "treasurer.html";
+    } else {
+        dashboardNavLink.href = "dashboard.html";
+    }
     // Only Treasurer can create budgets
     if (profile.role !== "treasurer") {
-        budgetForm.style.display = "none";
-        budgetMessage.textContent =
-            "Only the Treasurer can create budgets.";
+          createBudgetSection.style.display = "none";
+          pageTitle.textContent = "View Budgets";
+          pageDescription.textContent ="View available club budgets.";
     }
 
     return {

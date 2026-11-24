@@ -14,42 +14,89 @@
 
 <body>
 
-    <div class="dashboard">
+    <div class="app-layout">
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
 
-        <h1>ClubFund</h1>
-        <h2>Treasurer Dashboard</h2>
+            <h1 class="sidebar-logo">ClubFund</h1>
 
-        <button id="logoutButton">Logout</button>
-        <p id="message"></p>
+            <nav class="sidebar-nav">
+                <a href="treasurer.html" class="active">Dashboard</a>
 
-        <hr>
+                <a href="income.html">Income</a>
 
-        <h2>Expense Claims</h2>
+                <a href="expense.html">Submit New Expense</a>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Member</th>
-                    <th>Description</th>
-                    <th>Amount (RM)</th>
-                    <th>Category</th>
-                    <th>Date</th>
-                    <th>Receipt</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
+                <a href="budget.html">Budgets</a>
+            </nav>
 
-            <tbody id="expenseRecords">
-                <tr>
-                    <td colspan="8">Loading expenses...</td>
-                </tr>
-            </tbody>
-        </table>
+            <div class="sidebar-bottom">
+                <button id="logoutButton">Logout</button>
+            </div>
 
-        <hr>
+</aside>
 
-        <a href="budget.html">Manage Budgets</a>
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="page-header">
+                <h2>Treasurer Dashboard</h2>
+                <p>Review and manage expense claims.</p>
+            </header>
+
+
+            <!-- Club Financial Overview -->
+            <section class="financial-overview">
+
+                <div class="balance-card">
+                    <p>Club Balance</p>
+                    <h2 id="clubBalance">RM 0.00</h2>
+                </div>
+
+                <div class="summary-card">
+                    <p>Total Income</p>
+                    <h2 id="totalIncome">RM 0.00</h2>
+                </div>
+
+                <div class="summary-card">
+                    <p>Total Expenses</p>
+                    <h2 id="totalExpenses">RM 0.00</h2>
+                </div>
+
+            </section>
+
+
+            <section class="content-section">
+
+                <h2>Expense Claims</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Member</th>
+                            <th>Description</th>
+                            <th>Amount (RM)</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Receipt</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="expenseRecords">
+                        <tr>
+                            <td colspan="8">Loading expenses...</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+
+            <p id="message"></p>
+
+        </main>
 
     </div>
 

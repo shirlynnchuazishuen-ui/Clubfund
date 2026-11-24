@@ -12,56 +12,101 @@
 </head>
 <body>
 
-    <div class="dashboard">
-        <h1>ClubFund</h1>
-        <h2>Budget Management</h2>
+    <div class="app-layout">
 
-        <a href="dashboard.html">Back to Dashboard</a>
+        <!-- Sidebar -->
+       <aside class="sidebar">
 
-        <hr>
+    <h1 class="sidebar-logo">ClubFund</h1>
 
-        <h2>Create New Budget</h2>
+    <nav class="sidebar-nav">
+        <a href="dashboard.html" id="dashboardNavLink">Dashboard</a>
 
-        <form id="budgetForm">
+        <a href="income.html" id="incomeNavLink" style="display: none;">
+            Income
+        </a>
 
-            <label for="budgetName">Budget Name:</label>
-            <input type="text" id="budgetName" required>
+        <a href="expense.html">Submit New Expense</a>
 
-            <label for="totalAmount">Total Amount (RM):</label>
-            <input type="number" id="totalAmount" min="0.01" step="0.01" required>
+        <a href="budget.html" class="active">Budgets</a>
+    </nav>
 
-            <label for="startDate">Start Date:</label>
-            <input type="date" id="startDate">
+    <div class="sidebar-bottom">
+        <button id="logoutButton">Logout</button>
+        <p id="logoutMessage"></p>
+    </div>
 
-            <label for="endDate">End Date:</label>
-            <input type="date" id="endDate">
+</aside>
 
-            <button type="submit">Create Budget</button>
+        <!-- Main Content -->
+        <main class="main-content">
 
-        </form>
+            <header class="page-header">
+                <h2 id="pageTitle">Budget Management</h2>
+                <p id="pageDescription">Manage and monitor club budgets.</p>
+            </header>
 
-        <p id="budgetMessage"></p>
+            <!-- Create Budget -->
+            <section class="content-section" id="createBudgetSection">
 
-        <hr>
+                <h2 id="budgetFormTitle">Create New Budget</h2>
 
-        <h2>Existing Budgets</h2>
+                <form id="budgetForm">
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Budget Name</th>
-                    <th>Total Amount (RM)</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                </tr>
-            </thead>
+                    <div class="form-group">
+                        <label for="budgetName">Budget Name</label>
+                        <input type="text" id="budgetName" required>
+                    </div>
 
-            <tbody id="budgetRecords">
-                <tr>
-                    <td colspan="4">Loading budgets...</td>
-                </tr>
-            </tbody>
-        </table>
+                    <div class="form-group">
+                        <label for="totalAmount">Total Amount (RM)</label>
+                        <input type="number" id="totalAmount"
+                            min="0.01" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="startDate">Start Date</label>
+                        <input type="date" id="startDate">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endDate">End Date</label>
+                        <input type="date" id="endDate">
+                    </div>
+
+                    <button type="submit">Create Budget</button>
+
+                </form>
+
+                <p id="budgetMessage"></p>
+
+            </section>
+
+            <!-- Existing Budgets -->
+            <section class="content-section" id="existingBudgets">
+
+                <h2>Existing Budgets</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Budget Name</th>
+                            <th>Total Amount (RM)</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="budgetRecords">
+                        <tr>
+                            <td colspan="4">Loading budgets...</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+
+        </main>
 
     </div>
 

@@ -18,6 +18,13 @@ logoutButton.addEventListener("click", async function() {
 
 });
 
+const budgetDropdown = document.getElementById("budgetDropdown");
+const budgetMenu = document.getElementById("budgetMenu");
+
+budgetDropdown.addEventListener("click", function() {
+    budgetMenu.classList.toggle("show");
+});
+
 // Load Expense Records
 async function loadExpenses() {
 
@@ -90,3 +97,18 @@ async function loadExpenses() {
 
 // Run function
 loadExpenses();
+
+// Logout
+document.getElementById("logoutButton")
+    .addEventListener("click", async function() {
+
+        const { error } = await supabaseClient.auth.signOut();
+
+        if (error) {
+            document.getElementById("logoutMessage").textContent =
+                error.message;
+        } else {
+            window.location.href = "index.html";
+        }
+
+    });

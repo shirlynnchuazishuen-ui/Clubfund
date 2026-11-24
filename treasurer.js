@@ -1,3 +1,4 @@
+
 // Treasurer Dashboard
 const message = document.getElementById("message");
 const expenseRecords = document.getElementById("expenseRecords");
@@ -37,6 +38,57 @@ async function checkTreasurer() {
 }
 
 
+// Load Financial Overview
+async function loadFinancialOverview() {
+
+    const { data: incomes, error: incomeError } =
+        await supabaseClient
+            .from("Income")
+            .select("amount");
+
+    if (incomeError) {
+        message.textContent = incomeError.message;
+        return;
+    }
+
+    const { data: expenses, error: expenseError } =
+        await supabaseClient
+            .from("Expenses")
+            .select("amount, status");
+
+    if (expenseError) {
+        message.textContent = expenseError.message;
+        return;
+    }
+
+    // Calculate total income
+    const totalIncome = incomes.reduce(function(total, income) {
+        return total + Number(income.amount);
+    }, 0);
+
+    // Calculate approved expenses only
+    const approvedExpenses = expenses
+        .filter(expense => expense.status === "Approved")
+        .reduce(function(total, expense) {
+            return total + Number(expense.amount);
+        }, 0);
+
+    // Calculate club balance
+    const clubBalance = totalIncome - approvedExpenses;
+
+    // Display financial overview
+    document.getElementById("clubBalance").textContent =
+        "RM " + clubBalance.toFixed(2);
+
+    document.getElementById("totalIncome").textContent =
+        "RM " + totalIncome.toFixed(2);
+
+    document.getElementById("totalExpenses").textContent =
+        "RM " + approvedExpenses.toFixed(2);
+
+}
+
+
 // Load all expense claims
 async function loadExpenses() {
 
@@ -46,7 +98,6 @@ async function loadExpenses() {
         </tr>
     `;
 
-    // Get expenses
     const { data: expenses, error } = await supabaseClient
         .from("Expenses")
         .select("*")
@@ -109,7 +160,8 @@ async function loadExpenses() {
             profileMap[expense.user_id] || "Unknown";
 
         descriptionCell.textContent = expense.description;
-        amountCell.textContent = "RM " + expense.amount;
+        amountCell.textContent =
+            "RM " + Number(expense.amount).toFixed(2);
         categoryCell.textContent = expense.category;
         dateCell.textContent = expense.expense_date;
         statusCell.textContent = expense.status || "Pending";
@@ -139,28 +191,27 @@ async function loadExpenses() {
 
         receiptCell.appendChild(receiptLink);
 
-
-       // Approve button
+        // Approve button
         const approveButton = document.createElement("button");
         approveButton.textContent = "Approve";
 
         approveButton.addEventListener("click", function() {
-        updateStatus(expense.expense_id, "Approved");
+            updateStatus(expense.expense_id, "Approved");
         });
-
 
         // Reject button
         const rejectButton = document.createElement("button");
         rejectButton.textContent = "Reject";
+
         rejectButton.addEventListener("click", function() {
-        updateStatus(expense.expense_id, "Rejected");
+            updateStatus(expense.expense_id, "Rejected");
         });
 
+        // Disable buttons if expense is already processed
+        approveButton.disabled = expense.status !== "Pending";
+        rejectButton.disabled = expense.status !== "Pending";
 
-// Disable buttons if expense is already processed
-approveButton.disabled = expense.status !== "Pending";
-rejectButton.disabled = expense.status !== "Pending";
-
+        approveButton.style.marginRight = "10px";
 
         actionCell.appendChild(approveButton);
         actionCell.appendChild(rejectButton);
@@ -200,6 +251,7 @@ async function updateStatus(expenseId, newStatus) {
         "Expense status updated to " + newStatus + ".";
 
     await loadExpenses();
+    await loadFinancialOverview();
 
 }
 
@@ -225,6 +277,7 @@ async function initializeTreasurerPage() {
 
     if (isTreasurer) {
         await loadExpenses();
+        await loadFinancialOverview();
     }
 
 }
