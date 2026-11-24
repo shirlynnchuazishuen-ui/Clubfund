@@ -18,13 +18,6 @@ logoutButton.addEventListener("click", async function() {
 
 });
 
-const budgetDropdown = document.getElementById("budgetDropdown");
-const budgetMenu = document.getElementById("budgetMenu");
-
-budgetDropdown.addEventListener("click", function() {
-    budgetMenu.classList.toggle("show");
-});
-
 // Load Expense Records
 async function loadExpenses() {
 
