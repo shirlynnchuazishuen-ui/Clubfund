@@ -146,3 +146,18 @@ async function initializeBudgetPage() {
 }
 
 initializeBudgetPage();
+
+// Logout
+document.getElementById("logoutButton")
+    .addEventListener("click", async function() {
+
+        const { error } = await supabaseClient.auth.signOut();
+
+        if (error) {
+            document.getElementById("logoutMessage").textContent =
+                error.message;
+        } else {
+            window.location.href = "index.html";
+        }
+
+    });
