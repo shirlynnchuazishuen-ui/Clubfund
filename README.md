@@ -24,9 +24,9 @@ ClubFund is a web-based platform designed to help university clubs manage their 
 
 # Demo
 
-We have hosted our web application on [Vercel].
+We have hosted our web application on Vercel.
 
-You can access the web application at this [link](YOUR_DEPLOYED_URL).
+You can access the web application at https://clubfund-five.vercel.app/
 
 # Frontend & Backend
 
